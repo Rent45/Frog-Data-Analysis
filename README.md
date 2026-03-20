@@ -14,7 +14,11 @@ This project explores the environmental factors influencing frog presence across
 * **meanmin / meanmax:** Minimum and maximum temperatures, °C.
 
 ## 🎯 Step 1: The Goal
-**Primary Objective:** Not yet determined
+**Primary Objective:** To perform a comprehensive Exploratory Data Analysis (EDA) on amphibian habitats to determine the most critical environmental drivers for frog presence. This analysis will:
+1. Evaluate climate sensitivity (temperature and rainfall).
+2. Assess the impact of physical geography (water sources and distance).
+3. Build a profile of the "ideal" habitat to guide future conservation funding and fieldwork.
+
 **Secondary Objective:** Identify anomalies in the dataset and standardize geographical metrics for accurate reporting.
 
 ## 🛠️ Tools Used
