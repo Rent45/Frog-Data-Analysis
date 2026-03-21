@@ -31,10 +31,43 @@ This project explores the environmental factors influencing frog presence across
 * Will add later
 
 ## 📊 Step 3 & 4: Analysis & Key Findings
-* *(Pending analysis...)*
+
+By comparing locations with and without frogs, we discovered clear environmental preferences. 
+The data reveals that physical geography plays a much larger role in frog presence than local climate.
+
+### The Ideal Habitat Profile
+
+| Environmental Metric | Frogs Absent (0) | Frogs Present (1) | Difference / Impact |
+| :--- | :--- | :--- | :--- |
+| **Distance to Water/Road (Median)** | 1500 m | 500 m | **- 1 000 m** (Highly Significant) |
+| **Number of Pools (Median)** | 16 | 21 | **+ 5 pools** (Significant) |
+| **Rainfall (Median)** | 149.33 mm | 148.33 mm | *Negligible* |
+| **Min Temperature (Median)** | 2.83°C | 3.43°C | *+0.6°C* (Slight Preference) |
+| **Max Temperature (Median)** | 13.2°C | 13.9°C | *+ 0.7°C* (Slight Preference) |
+
+In the analysis, we noticed that the max values changed the most: the outliers mostly belong to the places, where frogs are absent. 
+The values of number of pools and distance to the nearest water source affects the presence of frogs the most. 
+Hence, we should focus on those values most. The others just need to be within acceptable range.
 
 ## 💡 Step 5: Recommended Actions
-* *(Pending conclusions...)*
+
+### The Ideal Habitat Profile
+
+The place should be roughly as following:
+
+| Altitude | Distance | Pools | Sites | Rain | Min Temp | Max Temp |
+| 1500 m. | 500 m. | 21+ | 3+ | ~150 mm. | ~3.5°C | ~14°C |
+
+Based on the criteria, it would roughly fall either in Cfb and Cfc (Temperate with no dry season), or in BWk (Dry arid desert cold) climates.
+By combining the climate with high elevation, we get such regions:
+* Nothern Spain
+* South-Eastern Australia
+* Tasmania
+* New Zealand
+* Madagascar
+* South Africa
+* Souther Argentina
+* Northern China
 
 ## 📖 Sources
 The CSV file was imported from: https://www.kaggle.com/datasets/ukveteran/frogs-data
