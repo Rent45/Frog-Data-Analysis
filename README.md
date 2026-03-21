@@ -15,9 +15,9 @@ This project explores the environmental factors influencing frog presence across
 
 ## 🎯 Step 1: The Goal
 **Primary Objective:** To perform a comprehensive Exploratory Data Analysis (EDA) on amphibian habitats to determine the most critical environmental drivers for frog presence. This analysis will:
-1. Evaluate climate sensitivity (temperature and rainfall).
-2. Assess the impact of physical geography (water sources and distance).
-3. Build a profile of the "ideal" habitat to guide future conservation funding and fieldwork.
+1. Build a profile of the "ideal" habitat to guide future conservation funding and fieldwork.
+2. Evaluate climate sensitivity (temperature and rainfall).
+3. Assess the impact of physical geography (water sources and distance).
 
 **Secondary Objective:** Identify anomalies in the dataset and standardize geographical metrics for accurate reporting.
 
@@ -34,7 +34,7 @@ This project explores the environmental factors influencing frog presence across
 
 By comparing locations with and without frogs, we discovered clear environmental preferences. The data reveals that physical geography plays a much larger role in frog presence than local climate.
 
-### The Ideal Habitat Profile
+### 1. The Ideal Habitat Profile
 
 | Environmental Metric | Frogs Absent (0) | Frogs Present (1) | Difference / Impact |
 | :--- | :--- | :--- | :--- |
@@ -49,6 +49,8 @@ In the analysis, we noticed that the maximum values changed the most: the outlie
 ---
 
 ## 💡 Step 5: Recommended Actions
+
+### 1. The Ideal Habitat Profile
 
 Based on our analysis, the ideal location for future field expeditions should look roughly like this:
 
