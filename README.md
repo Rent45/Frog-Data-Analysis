@@ -46,6 +46,50 @@ By comparing locations with and without frogs, we discovered clear environmental
 
 In the analysis, we noticed that the maximum values changed the most: the outliers mostly belong to the locations where frogs are absent. The number of pools and the distance to the nearest water source affect the presence of frogs the most. Hence, conservation efforts should prioritize these metrics, while ensuring climate metrics remain within acceptable ranges.
 
+
+### 2. Hypothesis Testing: Climate vs. Geography
+To rigorously test whether climate or physical geography (distance from the nearest water source) drives frog presence, we performed a cohort analysis in SQL and validated it with hypothesis testing in Python. 
+
+#### A. SQL Cohort Analysis (Equal-Sized Binning)
+Using SQL window functions (`NTILE`), we divided the dataset into three equal-sized cohorts (~33.3% of the data each) to eliminate sample-size bias and calculate the "Win Rate" (probability of frog presence).
+
+* **Distance to Water/Roads (The Geography Angle)**
+  * **Close (< 500m):** 69.7% presence rate
+  * **Moderate (500m - 900m):** 55.8% presence rate
+  * **Far (> 900m):** 16.2% presence rate
+  * *Insight:* Habitats further than 900m from a primary water source see a massive, catastrophic drop in habitability.
+* **Rainfall (The Climate Angle)**
+  * **Low Rain (124 - 144 mm):** 36.6% presence rate
+  * **Moderate Rain (144 - 153 mm):** 33.8% presence rate
+  * **High Rain (153 - 198 mm):** 41.4% presence rate
+  * *Insight:* While there is a slight preference for the wettest habitats, rainfall is a relatively flat line.
+* **Temperature Volatility (Max Temp - Min Temp)**
+  * **Highly Stable (9.4°C - 10.2°C swing):** 33.8% presence rate
+  * **Moderate Swing (10.2°C - 10.6°C swing):** 40.8% presence rate
+  * **Volatile (10.6°C - 11.7°C swing):** 37.1% presence rate
+  * *Insight:* Frogs show remarkable resilience to temperature volatility.
+* **Midpoint Temperature (The Baseline Climate)**
+  * **Cold (6.8°C - 8.0°C):** 18.3% presence rate
+  * **Moderate (8.0°C - 8.6°C):** 38.0% presence rate
+  * **Warm (8.6°C - 10.2°C):** 55.7% presence rate
+  * *Insight:* Frogs exhibit a strong, mathematically significant preference for warmer baseline temperatures, with habitability tripling as the average temperature rises from 6.8°C to 10.2°C.
+
+#### B. Statistical Validation (Mann-Whitney U-Test)
+To mathematically prove our SQL EDA, the raw, un-binned data was exported to Python. Because environmental metrics like distance are heavily skewed and not normally distributed, we utilized the non-parametric **Mann-Whitney U-test** to calculate statistical significance.
+
+| Feature | Value of U | P-Value | Significance |
+| :--- | :--- | :--- | :--- |
+| **Distance** | 2316.0 | $1.03 \times 10^{-11}$ | **Significant** |
+| **Temp_Mid** | 3288.0 | $5.33 \times 10^{-6}$ | **Significant** |
+| **Temp_Diff** | 4910.0 | 0.426 | *Not Significant* |
+| **Av_Rain** | 5203.5 | 0.908 | *Not Significant* |
+
+**Conclusion:** The Python hypothesis testing perfectly mirrors the SQL cohort analysis. The Null Hypothesis is rejected for Distance and Midpoint Temperature, proving them to be the primary drivers of amphibian presence. Climate metrics like rainfall and temperature swings have no statistically significant impact.
+
+*(Note: Visualizations of these distributions and correlations can be found in the `Outputs/2.5 Validation of Correlation and Visualisations/` directory).*
+
+![Distance Distribution Chart](Outputs/2.5%20Validation%20of%20Correlation%20and%20Visualisations/Distribution%20of%20distance.png)
+
 ---
 
 ## 💡 Step 5: Recommended Actions
@@ -74,6 +118,17 @@ By further filtering for locations with high concentrations of water pools (spec
 3. **The South Island High Country** (Canterbury / Mackenzie Basin, New Zealand)
 
 *(Note: Reference images from Google Maps of these precise locations can be found in the `outputs/1.` folder).*
+
+### 2. Parameter Prioritization for Site Selection
+
+When evaluating potential habitats, conservation teams do not need to find a location that perfectly matches every single metric. Instead, site selection should follow a **two-tier prioritization strategy** based on our statistical modeling:
+
+* **Strict Constraints (The Correlated Drivers):** 
+  Habitat viability is strictly dictated by **Distance to Water** and **Midpoint Temperature**. Any chosen site *must* be within 500 meters of a primary water source (like a lake or dense pool cluster) and should have a warmer baseline temperature (> 8.6°C midpoint). Compromising on these variables will result in a catastrophic drop in amphibian presence.
+* **Flexible Variables (The Uncorrelated Factors):** 
+  Because our Mann-Whitney U-tests proved **Rainfall** and **Temperature Volatility** are statistically insignificant, fieldwork teams have massive geographic flexibility. We do not need to restrict our search to high-rainfall areas, nor do we need to avoid regions with volatile day-to-night temperature swings. 
+
+By holding the strict constraints tight and loosening the flexible variables, we vastly expand our potential global search radius.
 
 ---
 
