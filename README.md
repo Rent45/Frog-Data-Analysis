@@ -127,11 +127,20 @@ By further filtering for locations with high concentrations of water pools (spec
 
 ### 2. Parameter Prioritization for Site Selection
 
-When evaluating potential habitats, conservation teams do not need to find a location that perfectly matches every single metric. Instead, site selection should follow a **two-tier prioritization strategy** based on our statistical modeling:
+When evaluating potential habitats, conservation teams do not need to find a location that perfectly matches every single metric. Instead, site selection should follow a **Three-Tier Prioritization Strategy** based on our statistical modeling:
 
-* **Strict Constraints (The Correlated Drivers):** 
-  Will add later
-* **Flexible Variables (The Uncorrelated Factors):** 
+* **Tier 1: Strict Constraints (The Non-Negotiables)**
+  The statistical evidence is conclusive: habitat viability is anchored by a narrow "Survival Sweet Spot" defined by **Distance to Water**, **Midpoint Temperature**, and **Altitude**.
+  * **The Proximity Threshold (Distance < 500m):** Proximity to a primary water source is the single greatest predictor of habitability. Our analysis reveals a "geographical cliff" at the 900-meter mark, where presence probability plummets. The "commute" between breeding sites and foraging grounds must be minimized.
+  * **The Thermal Baseline (Midpoint Temp > 8.6°C):** While frogs show resilience to day-to-night temperature swings, the overall thermal energy of the environment must reach a specific baseline. Once the midpoint reaches > 8.6°C, presence rates nearly triple.
+  * **Altitude:** There is a highly significant preference for higher elevation sites (~1,500m).
+  * *The Bottom Line:* Compromising on Tier 1 variables effectively nullifies the conservation potential of the location.
+
+* **Tier 2: Habitat Quality Optimization**
+  The **Number of Pools** and **Number of Sites** are statistically significant but act as "value-add" drivers.
+  * *Business Action:* If a conservation charity has limited land-purchasing funds, they can prioritize buying land that meets Tier 1 criteria. If the land lacks natural pools, they can spend their remaining budget to **manually dig additional pools**, which is a scientifically backed method to artificially boost habitability.
+
+* **Tier 3: Flexible Variables (The Uncorrelated Factors)**
   Because our Mann-Whitney U-tests proved **Rainfall** and **Temperature Volatility** are statistically insignificant, fieldwork teams have massive geographic flexibility. We do not need to restrict our search to high-rainfall areas, nor do we need to avoid regions with volatile day-to-night temperature swings. 
 
 By holding the strict constraints tight and loosening the flexible variables, we vastly expand our potential global search radius.
