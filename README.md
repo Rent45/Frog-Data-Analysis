@@ -13,11 +13,14 @@ This project explores the environmental factors influencing frog presence across
 * **avrain:** Average rainfall, mm.
 * **meanmin / meanmax:** Minimum and maximum temperatures, °C.
 
-## 🎯 Step 1: The Goal
-**Primary Objective:** To perform a comprehensive Exploratory Data Analysis (EDA) on amphibian habitats to determine the most critical environmental drivers for frog presence. This analysis will:
-1. Build a profile of the "ideal" habitat to guide future conservation funding and fieldwork.
-2. Evaluate climate sensitivity (temperature and rainfall).
-3. Assess the impact of physical geography (water sources and distance).
+### 🎯 Step 1: Project Goals
+
+* **Goal 1: Establish the Ideal Habitat Profile**  
+  Identify the baseline geographical and climatic conditions of locations where frogs are currently present using descriptive statistics (medians, distributions, and outlier detection).
+* **Goal 2: Assess Climate vs. Geography Drivers**  
+  Evaluate climate sensitivity (temperature and rainfall) and assess the impact of physical geography (water sources and distance) using cohort analysis and rigorous hypothesis testing.
+* **Goal 3: Predictive Probability Modeling**  
+  By isolating the statistically significant parameters, build a predictive framework to approximate the exact probability of amphibian presence in any given new geographical location.
 
 **Secondary Objective:** Identify anomalies in the dataset and standardize geographical metrics for accurate reporting.
 
@@ -79,10 +82,13 @@ To mathematically prove our SQL EDA, the raw, un-binned data was exported to Pyt
 
 | Feature | Value of U | P-Value | Significance |
 | :--- | :--- | :--- | :--- |
-| **Distance** | 2316.0 | $1.03 \times 10^{-11}$ | **Significant** |
-| **Temp_Mid** | 3288.0 | $5.33 \times 10^{-6}$ | **Significant** |
-| **Temp_Diff** | 4910.0 | 0.426 | *Not Significant* |
-| **Av_Rain** | 5203.5 | 0.908 | *Not Significant* |
+| **Distance** | 2316.0 | $1.03 \times 10^{-11}$ | **Highly Significant** |
+| **Temp_Mid** | 3288.0 | $5.33 \times 10^{-6}$ | **Highly Significant** |
+| **Altitude** | 3464.0 | $3.42 \times 10^{-5}$ | **Highly Significant** |
+| **NoOfSites** | 4025.0 | $0.0044$ | **Significant** |
+| **NoOfPools** | 4277.5 | $0.0238$ | **Significant** |
+| **Temp_Diff** | 4910.0 | $0.426$ | *Not Significant* |
+| **Av_Rain** | 5203.5 | $0.908$ | *Not Significant* |
 
 **Conclusion:** The Python hypothesis testing perfectly mirrors the SQL cohort analysis. The Null Hypothesis is rejected for Distance and Midpoint Temperature, proving them to be the primary drivers of amphibian presence. Climate metrics like rainfall and temperature swings have no statistically significant impact.
 
@@ -124,7 +130,7 @@ By further filtering for locations with high concentrations of water pools (spec
 When evaluating potential habitats, conservation teams do not need to find a location that perfectly matches every single metric. Instead, site selection should follow a **two-tier prioritization strategy** based on our statistical modeling:
 
 * **Strict Constraints (The Correlated Drivers):** 
-  Habitat viability is strictly dictated by **Distance to Water** and **Midpoint Temperature**. Any chosen site *must* be within 500 meters of a primary water source (like a lake or dense pool cluster) and should have a warmer baseline temperature (> 8.6°C midpoint). Compromising on these variables will result in a catastrophic drop in amphibian presence.
+  Will add later
 * **Flexible Variables (The Uncorrelated Factors):** 
   Because our Mann-Whitney U-tests proved **Rainfall** and **Temperature Volatility** are statistically insignificant, fieldwork teams have massive geographic flexibility. We do not need to restrict our search to high-rainfall areas, nor do we need to avoid regions with volatile day-to-night temperature swings. 
 
