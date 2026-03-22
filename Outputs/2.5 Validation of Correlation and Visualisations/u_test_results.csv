@@ -1,5 +1,8 @@
 Feature,Value of U,P-Value,Significance
-distance,2316.0,1.0314627676442874e-11,Significant
+NoOfPools,4277.5,0.023820335649296438,Significant
+NoOfSites,4025.0,0.004445313790653188,Significant
+altitude,3464.0,3.416777299324815e-05,Significant
 avrain,5203.5,0.9078273422801296,Not Significant
+distance,2316.0,1.0314627676442874e-11,Significant
 temp_diff,4910.0,0.42637808030639635,Not Significant
 temp_mid,3288.0,5.331801246390571e-06,Significant
