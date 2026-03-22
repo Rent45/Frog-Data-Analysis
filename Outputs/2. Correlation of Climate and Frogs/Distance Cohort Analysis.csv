@@ -1,0 +1,4 @@
+"distance_bucket","min_distance_m","max_distance_m","total_locations","frog_win_rate_pct","pct_of_all_data"
+1,"250","500","71","71.83","33.49"
+2,"500","1750","71","23.94","33.49"
+3,"1750","18000","70","15.71","33.02"
