@@ -1,0 +1,5 @@
+Feature,Value of U,P-Value,Significance
+distance,2316.0,1.0314627676442874e-11,Significant
+avrain,5203.5,0.9078273422801296,Not Significant
+temp_diff,4910.0,0.42637808030639635,Not Significant
+temp_mid,3288.0,5.331801246390571e-06,Significant
