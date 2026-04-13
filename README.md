@@ -49,6 +49,7 @@ By comparing locations with and without frogs, we discovered clear environmental
 
 In the analysis, we noticed that the maximum values changed the most: the outliers mostly belong to the locations where frogs are absent. The number of pools and the distance to the nearest water source affect the presence of frogs the most. Hence, conservation efforts should prioritize these metrics, while ensuring climate metrics remain within acceptable ranges.
 
+---
 
 ### 2. Hypothesis Testing: Climate vs. Geography
 To rigorously test whether climate or physical geography (distance from the nearest water source) drives frog presence, we performed a cohort analysis in SQL and validated it with hypothesis testing in Python. 
@@ -98,6 +99,24 @@ To mathematically prove our SQL EDA, the raw, un-binned data was exported to Pyt
 
 ---
 
+### 3. Predictive Probability Modeling (Polynomial Logistic Regression)
+To satisfy Goal 3, we transitioned from descriptive statistics to predictive machine learning. By isolating the highly significant parameters (Distance, Temperature, and Altitude), we built a custom Logistic Regression model from scratch using Maximum Likelihood Estimation (MLE) and Gradient Descent.
+
+To accurately model the biological "Goldilocks Zone"—where temperatures too high or too low become fatal—we engineered a mean-centered quadratic feature for temperature `(Temp - Mean)^2`. 
+
+The final probability ($p$) of frog presence at any new site is calculated using this derived formula:
+
+$$p = \frac{1}{1 + e^{-(-117.5187 - 0.0007(\text{Distance}) + 6.9139(\text{Temp Mid}) - 0.6628(\text{Temp Mid} - \text{Mean})^2 + 0.0388(\text{Altitude}))}}$$
+
+**Statistical Summary & Confidence Intervals:**
+Using the Delta Method and the Fisher Information Matrix, we generated 95% and 99% Confidence Intervals to ensure the model's reliability. For an ideal sample habitat (500m Distance, 10.0°C, 1500m Altitude), the model predicts a near-certain presence:
+
+| Metric | Estimate | 90% CI | 95% CI | 99% CI |
+| :--- | :---: | :---: | :---: | :---: |
+| **Probability** | **99.96%** | [ 85.07%, 100.00%] | [ 64.12%, 100.00%] | [ 15.62%, 100.00%] |
+
+---
+
 ## 💡 Step 5: Recommended Actions
 
 ### 1. The Ideal Habitat Profile
@@ -125,6 +144,8 @@ By further filtering for locations with high concentrations of water pools (spec
 
 *(Note: Reference images from Google Maps of these precise locations can be found in the `outputs/1.` folder).*
 
+---
+
 ### 2. Parameter Prioritization for Site Selection
 
 When evaluating potential habitats, conservation teams do not need to find a location that perfectly matches every single metric. Instead, site selection should follow a **Three-Tier Prioritization Strategy** based on our statistical modeling:
@@ -144,6 +165,16 @@ When evaluating potential habitats, conservation teams do not need to find a loc
   Because our Mann-Whitney U-tests proved **Rainfall** and **Temperature Volatility** are statistically insignificant, fieldwork teams have massive geographic flexibility. We do not need to restrict our search to high-rainfall areas, nor do we need to avoid regions with volatile day-to-night temperature swings. 
 
 By holding the strict constraints tight and loosening the flexible variables, we vastly expand our potential global search radius.
+
+---
+
+### 3. Interactive Site Evaluation Dashboard
+To make this predictive probability model accessible to conservation teams in the field, the mathematical engine has been deployed as an interactive web dashboard. 
+
+Field researchers do not need to understand the underlying Matrix Calculus. They can simply adjust the sliders for distance, temperature, and altitude to calculate the real-time probability of amphibian presence before committing funds to a physical expedition.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?labpath=Outputs%2F3.1%20MLE%20and%20Confidence%20Interval%2FBinder%2FBinder.ipynb)  
+*(Click the launch badge above to open the interactive Python environment. Please allow 1-2 minutes for the cloud server to build).*
 
 ---
 
