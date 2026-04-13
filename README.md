@@ -171,10 +171,14 @@ By holding the strict constraints tight and loosening the flexible variables, we
 ### 3. Interactive Site Evaluation Dashboard
 To make this predictive probability model accessible to conservation teams in the field, the mathematical engine has been deployed as an interactive web dashboard. 
 
-Field researchers do not need to understand the underlying Matrix Calculus. They can simply adjust the sliders for distance, temperature, and altitude to calculate the real-time probability of amphibian presence before committing funds to a physical expedition.
+Field researchers can simply adjust the sliders for distance, temperature, and altitude to calculate the real-time probability of amphibian presence before committing funds to a physical expedition.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?labpath=Outputs%2F3.1%20MLE%20and%20Confidence%20Interval%2FBinder%2FBinder.ipynb)  
-*(Click the launch badge above to open the interactive Python environment. Please allow 1-2 minutes for the cloud server to build).*
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?urlpath=%2Fdoc%2Ftree%2Fbinder%2FBinder.ipynb)
+
+**How to use the dashboard:**
+1. **Launch:** Click the badge above to spin up the cloud server (please allow 1–2 minutes for the environment to build).
+2. **Run the Engine:** Once the notebook opens, click the **⏩ (Fast-Forward) icon** in the top toolbar. This will restart the kernel and run all the code cells automatically.
+3. **Explore:** Scroll to the very bottom of the page to adjust the environmental sliders and see the probability update in real time!
 
 ---
 
