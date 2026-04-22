@@ -115,6 +115,33 @@ Using the Delta Method and the Fisher Information Matrix, we generated 95% and 9
 | :--- | :---: | :---: | :---: | :---: |
 | **Probability** | **99.96%** | [ 85.07%, 100.00%] | [ 64.12%, 100.00%] | [ 15.62%, 100.00%] |
 
+
+To capture complex, overlapping ecological clusters that a linear equation might miss, the dataset was subjected to advanced manifold learning techniques (UMAP, t-SNE, Kernel PCA) paired with downstream Support Vector Machines. 
+
+**Dimensionality Reduction & Classification Leaderboard:**
+
+| Rank | Dimensionality Reduction | Parameters | Downstream Classifier | Accuracy |
+| :---: | :--- | :--- | :--- | :--- |
+| **1** | **t-SNE** | Perplexity = 65 | SVM (RBF) | **82.08%** |
+| **2** | **UMAP** | n_neighbors = 10, min_dist = 0.001 | Logistic Regression | **80.66%** |
+| **3** | **t-SNE** | Perplexity = 5 | Logistic Regression | 79.72% |
+| **3** | **t-SNE** | Perplexity = 5 | SVM (RBF) | 79.72% |
+| **5** | **UMAP** | n_neighbors = 10, min_dist = 0.001 | SVM (Polynomial) | 78.30% |
+| **6** | **t-SNE** | Perplexity = 65 | Logistic Regression | 76.89% |
+| **7** | **Kernel PCA** | (RBF Kernel) | Logistic Regression | 73.58% |
+| **8** | **Kernel PCA** | (RBF Kernel) | SVM (Poly & RBF) | 73.11% |
+
+**Executive Modeling Conclusions:**
+1. **The Synergy of t-SNE (65) + RBF SVM:** The highest quantitative accuracy (82.08%) was achieved by combining a globally stable manifold with a locally flexible boundary. Because the manifold was not artificially shattered, the RBF SVM was able to smoothly wrap its curved decision boundaries around continuous environmental gradients.
+2. **The t-SNE "Perplexity 5" Illusion:** At Perplexity 5, Logistic Regression and the RBF SVM scored the exact same percentage (79.72%). This proves that extreme low perplexity violently shatters the data into isolated micro-clusters, leading the model to memorize topological noise rather than genuine ecological boundaries.
+3. **UMAP Does the Heavy Lifting:** Pairing UMAP with a simple Logistic Regression yielded 80.66% accuracy. Introducing a complex Polynomial SVM degraded performance to 78.30%. UMAP's non-linear unfolding is so highly aggressive that adding a secondary non-linear classifier on top of it causes instant overfitting. 
+4. **The Failure of Kernel PCA:** Relying purely on global variance (stretching) is fundamentally the wrong mathematical approach for separating overlapping ecological habitats.
+
+**Ecological Impact & Deployment Reality:**
+While overall accuracy provides a baseline, a full Classification Report reveals the true ecological impact—evaluating False Negatives via **Recall** (How many habitats did we successfully find?) and False Positives via **Precision** (How often is the team wasting funding on empty sites?). 
+
+*Conclusion:* While t-SNE achieved the peak theoretical accuracy, t-SNE fundamentally lacks a `.transform()` method, making it incapable of mapping live, incoming field data. Therefore, the **UMAP + Logistic Regression pipeline** is selected as the final production architecture. Sacrificing ~1.4% accuracy is a necessary engineering trade-off to secure a robust pipeline capable of real-time inference.
+
 ---
 
 ## 💡 Step 5: Recommended Actions
@@ -168,17 +195,19 @@ By holding the strict constraints tight and loosening the flexible variables, we
 
 ---
 
-### 3. Interactive Site Evaluation Dashboard
-To make this predictive probability model accessible to conservation teams in the field, the mathematical engine has been deployed as an interactive web dashboard. 
+### 3. Interactive Site Evaluation Dashboards
+To make this modeling accessible to conservation teams in the field, our predictive engines have been deployed as reactive web dashboards. Field researchers can adjust environmental sliders to calculate the real-time probability of amphibian presence before committing funds to physical expeditions.
 
-Field researchers can simply adjust the sliders for distance, temperature, and altitude to calculate the real-time probability of amphibian presence before committing funds to a physical expedition.
+**Dashboard 1: The Raw Statistical Regression Model** *(Fast, purely mathematical estimates utilizing our handcrafted Maximum Likelihood formula).*
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?urlpath=%2Fdoc%2Ftree%2Fbinder%2FRegression_Binder.ipynb)
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?urlpath=%2Fdoc%2Ftree%2Fbinder%2FBinder.ipynb)
+**Dashboard 2: The Non-Linear Machine Learning Pipeline** *(Advanced inference utilizing the deployed 9D PCA + SVM and UMAP + Logistic Regression models).*
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rent45/Frog-Data-Analysis/main?urlpath=%2Fdoc%2Ftree%2Fbinder%2FPCA_Binder.ipynb)
 
-**How to use the dashboard:**
-1. **Launch:** Click the badge above to spin up the cloud server (please allow 1–2 minutes for the environment to build).
-2. **Run the Engine:** Once the notebook opens, click the **⏩ (Fast-Forward) icon** in the top toolbar. This will restart the kernel and run all the code cells automatically.
-3. **Explore:** Scroll to the very bottom of the page to adjust the environmental sliders and see the probability update in real time!
+**How to use the dashboards:**
+1. **Launch:** Click a badge above to spin up the cloud server (please allow 1–2 minutes for the environment to build).
+2. **Run the Engine:** Once the notebook opens, click the **⏩ (Fast-Forward) icon** in the top toolbar to restart the kernel and run the deployment code.
+3. **Explore:** Scroll to the bottom of the page, interact with the sliders, and watch the probabilities dynamically update based on the model's architecture!
 
 ---
 
