@@ -1,4 +1,14 @@
+ipython
+ipython
+ipython
+ipython
+umap-learn
+scikit-learn
+ipywidgets
+statsmodels
+opencv-python
+scipy
+matplotlib
+seaborn
 numpy
 pandas
-statsmodels
-ipywidgets
